@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Medecin;
 
-use App\User;
+use App\Medecin;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
-class RegisterController extends Controller
+class MedecinRegisterController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -46,7 +46,8 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
+
+    public function validator(array $data)
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
@@ -61,13 +62,17 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    public function showregisterFrom()
     {
-        return User::create([
+        return view('Dashbord_medecin.medecin_register');
+    }
+    public function create(array $data)
+    {
+        return Medecin::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'Tel' => $data['tel'],
-            'Adresse' => $data['adresse'],
+            'Tel' => $data['Tel'],
+            'Adresse' => $data['Adresse'],
             'password' => Hash::make($data['password']),
         ]);
     }

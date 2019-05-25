@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
-
-use App\User;
+namespace App\Http\Controllers\Admin;
+use Illuminate\Http\Request;
+use App\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
-class RegisterController extends Controller
+
+class AdminRegisterController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -61,14 +62,19 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    public function showregisterFrom()
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'Tel' => $data['tel'],
-            'Adresse' => $data['adresse'],
-            'password' => Hash::make($data['password']),
+        return view('Dashbord_admin.admin_register');
+    }
+    public function create(Request $request)
+    {
+       
+        return Admin::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'Tel' => $request->Tel,
+            'Adresse' => $request->Adresse,
+            'password' => Hash::make($request->password),
         ]);
     }
 }
