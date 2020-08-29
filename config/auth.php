@@ -53,13 +53,13 @@ return [
             'driver' => 'token',
             'provider' => 'admins',
         ],
-        'medecin' => [
+        'architecte' => [
             'driver' => 'session',
-            'provider' => 'medecins',
+            'provider' => 'architectes',
         ],
-        'medecin-api' => [
+        'architecte-api' => [
             'driver' => 'token',
-            'provider' => 'medecins',
+            'provider' => 'architectes',
         ],
     ],
 
@@ -89,9 +89,9 @@ return [
             'driver' => 'eloquent',
             'model' => App\Admin::class,
         ],
-        'medecins' => [
+        'architectes' => [
             'driver' => 'eloquent',
-            'model' => App\Medecin::class,
+            'model' => App\Architecte::class,
         ],
         // 'users' => [
         //     'driver' => 'database',

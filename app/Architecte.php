@@ -5,9 +5,10 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Admin extends Authenticatable
+class Architecte extends  Authenticatable
+   
 {
-    protected $guard = 'admin';
+    protected $guard = 'medecin';
 
     /**
      * The attributes that are mass assignable.
@@ -15,7 +16,7 @@ class Admin extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'Tel', 'Adresse', 'password',
+        'name', 'email','Tel', 'Adresse', 'password',
     ];
 
     /**
@@ -26,7 +27,4 @@ class Admin extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    public function plans(){
-        return $this->hasMany('App\Plan');
-    }
 }

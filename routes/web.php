@@ -18,6 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
  Route::prefix('admin')->group(function() {
      Route::get('/register',
    'Admin\AdminRegisterController@showregisterFrom')->name('admin.register');
@@ -30,19 +31,25 @@ Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/', 'Admin\AdminController@index')->name('admin.dashboard');
   }) ;
 
-  Route::prefix('medecin')->group(function() {
+  Route::prefix('architecte')->group(function() {
 
        Route::get('/register',
-   'Medecin\MedecinRegisterController@showregisterFrom')->name('medecin.register');
+   'Architecte\ArchitecteRegisterController@showregisterFrom')->name('architecte.register');
          Route::post('/register',
-   'Medecin\MedecinRegisterController@showregisterFrom')->name('medecin.register.submit');
+   'Architecte\ArchitecteRegisterController@showregisterFrom')->name('architecte.register.submit');
    Route::get('/login',
-   'Medecin\MedecinLoginController@showLoginForm')->name('medecin.login');
-   Route::post('/login', 'Medecin\MedecinLoginController@login')->name('medecin.login.submit');
-   Route::get('logout/', 'Medecin\MedecinLoginController@logout')->name('medecin.logout');
-    Route::get('/', 'Medecin\MedecinController@index')->name('medecin.dashboard');
+   'Architecte\ArchitecteLoginController@showLoginForm')->name('architecte.login');
+   Route::post('/login', 'Architecte\ArchitecteLoginController@login')->name('architecte.login.submit');
+   Route::get('logout/', 'Architecte\ArchitecteLoginController@logout')->name('architecte.logout');
+    Route::get('/', 'Architecte\ArchitecteController@index')->name('architecte.dashboard');
   }) ;
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+/******route front */
+
+Route::get('/',function(){
+ return view('front.index');
+});
